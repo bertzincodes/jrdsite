@@ -1,42 +1,40 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>IMC</title>
 
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+</head>
+<body>
+	<div>Calculadora IMC</div>
+	<form>
+     <label>Nome</label>
+     <input type="text" name="Nome"><br><br>
+     <label>Peso</label>
+     <input type="number" name="Peso"><br><br>
+     <label>Altura</label>
+     <input type="number" name="Altura"><br><br>
+    
+       <button type="submit" onclick="calcularIMC()">Calcular IMC</button>
+     </form>
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+     <p>Seu IMC é: <span id = "Resultado"></span><p>
+     	    <script 
+     	function calcularIMC() {
+       var peso = document.getElementbyld(peso).value;
+        var altura = document.getElementbyld(altura).value / 100;
+         var imc = peso/(altura * altura);
+         
+         document.getElementbyld(Resultado).innerHTML = imc.toFixed(2);
+     	}
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+     	    ></script>
 
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
-jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+
+
+
+</body>
+</html>
+
